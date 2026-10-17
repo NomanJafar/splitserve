@@ -1,0 +1,62 @@
+[
+ {
+  "condition": "monolithic 1xT4",
+  "requests": 1158,
+  "errors": 0,
+  "out_tok_s": 775,
+  "chat_ttft_p50_ms": 148.0,
+  "chat_itl_p50_ms": 32.9,
+  "chat_itl_p99_ms": 583.6,
+  "chat_itl_max_ms": 748.7,
+  "long_ttft_p50_ms": 655.1,
+  "long_ttft_p95_ms": 1152.9,
+  "prefill_p50_ms": null,
+  "handoff_p50_ms": 150.21158499996545,
+  "startup_s": 163
+ },
+ {
+  "condition": "monolithic x2 (round-robin)",
+  "requests": 1158,
+  "errors": 0,
+  "out_tok_s": 777,
+  "chat_ttft_p50_ms": 84.1,
+  "chat_itl_p50_ms": 19.8,
+  "chat_itl_p99_ms": 55.0,
+  "chat_itl_max_ms": 613.4,
+  "long_ttft_p50_ms": 623.4,
+  "long_ttft_p95_ms": 803.6,
+  "prefill_p50_ms": null,
+  "handoff_p50_ms": 82.92876800010163,
+  "startup_s": 103
+ },
+ {
+  "condition": "1P + 1D, NixlConnector",
+  "requests": 1158,
+  "errors": 0,
+  "out_tok_s": 774,
+  "chat_ttft_p50_ms": 302.9,
+  "chat_itl_p50_ms": 26.7,
+  "chat_itl_p99_ms": 54.8,
+  "chat_itl_max_ms": 133.8,
+  "long_ttft_p50_ms": 1071.8,
+  "long_ttft_p95_ms": 1549.2,
+  "prefill_p50_ms": 100.00373800005491,
+  "handoff_p50_ms": 212.07529299999806,
+  "startup_s": 157
+ },
+ {
+  "condition": "1P + 1D, ExampleConnector (shared dir)",
+  "requests": 1158,
+  "errors": 984,
+  "out_tok_s": 114,
+  "chat_ttft_p50_ms": 222.0,
+  "chat_itl_p50_ms": 27.5,
+  "chat_itl_p99_ms": 91.6,
+  "chat_itl_max_ms": 170.6,
+  "long_ttft_p50_ms": 896.7,
+  "long_ttft_p95_ms": 1141.4,
+  "prefill_p50_ms": 124.60983799996939,
+  "handoff_p50_ms": 138.44057300002532,
+  "startup_s": 124
+ }
+]

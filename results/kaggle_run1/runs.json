@@ -1,0 +1,218 @@
+[
+ {
+  "condition": "monolithic 1xT4",
+  "tag": "monolithic_1xT4",
+  "startup_s": 162.9721281528473,
+  "startup": {
+   "0": {
+    "attention_backend": "TRITON_ATTN",
+    "model_load_gib": 2.98,
+    "model_load_seconds": null,
+    "kv_cache_gib": 9.08,
+    "kv_cache_tokens": 340064,
+    "max_concurrency": 83.02
+   }
+  },
+  "proxy": {
+   "n": 1158,
+   "failed": 0,
+   "prefill_p50_ms": null,
+   "prefill_p95_ms": null,
+   "handoff_p50_ms": 150.21158499996545,
+   "handoff_p95_ms": 827.1173231000092
+  },
+  "proxy_metrics": "splitserve_requests_total 1190\nsplitserve_errors_total 0\nsplitserve_prefill_ms{quantile=\"0.5\"} NaN\nsplitserve_prefill_ms{quantile=\"0.95\"} NaN\nsplitserve_prefill_ms{quantile=\"0.99\"} NaN\nsplitserve_handoff_ms{quantile=\"0.5\"} 150.21158499996545\nsplitserve_handoff_ms{quantile=\"0.95\"} 827.1173231000092\nsplitserve_handoff_ms{quantile=\"0.99\"} 1171.620635370023\nsplitserve_total_ms{quantile=\"0.5\"} 6241.698695500019\nsplitserve_total_ms{quantile=\"0.95\"} 10964.501999050024\nsplitserve_total_ms{quantile=\"0.99\"} 12107.948429110027\n",
+  "chat": {
+   "requests": 1077,
+   "errors": 0,
+   "out_tok_s": 754,
+   "ttft_p50_ms": 148.0,
+   "ttft_p95_ms": 802.7,
+   "ttft_p99_ms": 1161.4,
+   "itl_p50_ms": 32.9,
+   "itl_p95_ms": 81.2,
+   "itl_p99_ms": 583.6,
+   "itl_max_ms": 748.7
+  },
+  "long": {
+   "requests": 81,
+   "errors": 0,
+   "out_tok_s": 21,
+   "ttft_p50_ms": 655.1,
+   "ttft_p95_ms": 1152.9,
+   "ttft_p99_ms": 1195.4,
+   "itl_p50_ms": 36.1,
+   "itl_p95_ms": 104.8,
+   "itl_p99_ms": 583.5,
+   "itl_max_ms": 693.3
+  }
+ },
+ {
+  "condition": "monolithic x2 (round-robin)",
+  "tag": "monolithic_x2",
+  "startup_s": 103.3584771156311,
+  "startup": {
+   "0": {
+    "attention_backend": "TRITON_ATTN",
+    "model_load_gib": 2.98,
+    "model_load_seconds": null,
+    "kv_cache_gib": 9.4,
+    "kv_cache_tokens": 351968,
+    "max_concurrency": 85.93
+   },
+   "1": {
+    "attention_backend": "TRITON_ATTN",
+    "model_load_gib": 2.98,
+    "model_load_seconds": null,
+    "kv_cache_gib": 9.4,
+    "kv_cache_tokens": 351968,
+    "max_concurrency": 85.93
+   }
+  },
+  "proxy": {
+   "n": 1158,
+   "failed": 0,
+   "prefill_p50_ms": null,
+   "prefill_p95_ms": null,
+   "handoff_p50_ms": 82.92876800010163,
+   "handoff_p95_ms": 623.1377471499513
+  },
+  "proxy_metrics": "splitserve_requests_total 1190\nsplitserve_errors_total 0\nsplitserve_prefill_ms{quantile=\"0.5\"} NaN\nsplitserve_prefill_ms{quantile=\"0.95\"} NaN\nsplitserve_prefill_ms{quantile=\"0.99\"} NaN\nsplitserve_handoff_ms{quantile=\"0.5\"} 82.92876800010163\nsplitserve_handoff_ms{quantile=\"0.95\"} 623.1377471499513\nsplitserve_handoff_ms{quantile=\"0.99\"} 756.6589989001084\nsplitserve_total_ms{quantile=\"0.5\"} 2996.5548944999227\nsplitserve_total_ms{quantile=\"0.95\"} 4575.396615149976\nsplitserve_total_ms{quantile=\"0.99\"} 5357.647160389975\n",
+  "chat": {
+   "requests": 1077,
+   "errors": 0,
+   "out_tok_s": 756,
+   "ttft_p50_ms": 84.1,
+   "ttft_p95_ms": 473.8,
+   "ttft_p99_ms": 664.0,
+   "itl_p50_ms": 19.8,
+   "itl_p95_ms": 41.2,
+   "itl_p99_ms": 55.0,
+   "itl_max_ms": 613.4
+  },
+  "long": {
+   "requests": 81,
+   "errors": 0,
+   "out_tok_s": 21,
+   "ttft_p50_ms": 623.4,
+   "ttft_p95_ms": 803.6,
+   "ttft_p99_ms": 1000.0,
+   "itl_p50_ms": 22.0,
+   "itl_p95_ms": 51.7,
+   "itl_p99_ms": 87.0,
+   "itl_max_ms": 589.6
+  }
+ },
+ {
+  "condition": "1P + 1D, NixlConnector",
+  "tag": "1P_p_1D",
+  "startup_s": 157.18979120254517,
+  "startup": {
+   "1": {
+    "attention_backend": "TRITON_ATTN",
+    "model_load_gib": 2.98,
+    "model_load_seconds": null,
+    "kv_cache_gib": 9.08,
+    "kv_cache_tokens": 340064,
+    "max_concurrency": 83.02
+   },
+   "0": {
+    "attention_backend": "TRITON_ATTN",
+    "model_load_gib": 2.98,
+    "model_load_seconds": null,
+    "kv_cache_gib": 9.08,
+    "kv_cache_tokens": 340064,
+    "max_concurrency": 83.02
+   }
+  },
+  "proxy": {
+   "n": 1158,
+   "failed": 0,
+   "prefill_p50_ms": 100.00373800005491,
+   "prefill_p95_ms": 765.2463884499754,
+   "handoff_p50_ms": 212.07529299999806,
+   "handoff_p95_ms": 595.1590608999825
+  },
+  "proxy_metrics": "splitserve_requests_total 1190\nsplitserve_errors_total 0\nsplitserve_prefill_ms{quantile=\"0.5\"} 100.00373800005491\nsplitserve_prefill_ms{quantile=\"0.95\"} 765.2463884499754\nsplitserve_prefill_ms{quantile=\"0.99\"} 1078.3428259099994\nsplitserve_handoff_ms{quantile=\"0.5\"} 212.07529299999806\nsplitserve_handoff_ms{quantile=\"0.95\"} 595.1590608999825\nsplitserve_handoff_ms{quantile=\"0.99\"} 767.4372121299166\nsplitserve_total_ms{quantile=\"0.5\"} 3776.677108500053\nsplitserve_total_ms{quantile=\"0.95\"} 4845.071948000168\nsplitserve_total_ms{quantile=\"0.99\"} 5298.2080267000865\n",
+  "chat": {
+   "requests": 1077,
+   "errors": 0,
+   "out_tok_s": 753,
+   "ttft_p50_ms": 302.9,
+   "ttft_p95_ms": 1271.7,
+   "ttft_p99_ms": 1607.0,
+   "itl_p50_ms": 26.7,
+   "itl_p95_ms": 38.7,
+   "itl_p99_ms": 54.8,
+   "itl_max_ms": 133.8
+  },
+  "long": {
+   "requests": 81,
+   "errors": 0,
+   "out_tok_s": 21,
+   "ttft_p50_ms": 1071.8,
+   "ttft_p95_ms": 1549.2,
+   "ttft_p99_ms": 1729.7,
+   "itl_p50_ms": 27.1,
+   "itl_p95_ms": 37.4,
+   "itl_p99_ms": 48.7,
+   "itl_max_ms": 117.8
+  }
+ },
+ {
+  "condition": "1P + 1D, ExampleConnector (shared dir)",
+  "tag": "1P_p_1D",
+  "startup_s": 124.47774744033813,
+  "startup": {
+   "0": {
+    "attention_backend": "TRITON_ATTN",
+    "model_load_gib": 2.98,
+    "model_load_seconds": null,
+    "kv_cache_gib": 9.08,
+    "kv_cache_tokens": 340064,
+    "max_concurrency": 83.02
+   },
+   "1": {
+    "attention_backend": "TRITON_ATTN",
+    "model_load_gib": 2.98,
+    "model_load_seconds": null,
+    "kv_cache_gib": 9.08,
+    "kv_cache_tokens": 340064,
+    "max_concurrency": 83.02
+   }
+  },
+  "proxy": {
+   "n": 193,
+   "failed": 965,
+   "prefill_p50_ms": 124.60983799996939,
+   "prefill_p95_ms": 1061.9021589999647,
+   "handoff_p50_ms": 138.44057300002532,
+   "handoff_p95_ms": 1834.5903877999717
+  },
+  "proxy_metrics": "splitserve_requests_total 1190\nsplitserve_errors_total 965\nsplitserve_prefill_ms{quantile=\"0.5\"} 124.60983799996939\nsplitserve_prefill_ms{quantile=\"0.95\"} 1061.9021589999647\nsplitserve_prefill_ms{quantile=\"0.99\"} 1323.931314480024\nsplitserve_handoff_ms{quantile=\"0.5\"} 138.44057300002532\nsplitserve_handoff_ms{quantile=\"0.95\"} 1834.5903877999717\nsplitserve_handoff_ms{quantile=\"0.99\"} 1919.2141111199453\nsplitserve_total_ms{quantile=\"0.5\"} 3932.106341000008\nsplitserve_total_ms{quantile=\"0.95\"} 5107.147327799976\nsplitserve_total_ms{quantile=\"0.99\"} 5484.127959480138\n",
+  "chat": {
+   "requests": 1077,
+   "errors": 919,
+   "out_tok_s": 110,
+   "ttft_p50_ms": 222.0,
+   "ttft_p95_ms": 951.5,
+   "ttft_p99_ms": 1190.7,
+   "itl_p50_ms": 27.5,
+   "itl_p95_ms": 59.1,
+   "itl_p99_ms": 91.6,
+   "itl_max_ms": 170.6
+  },
+  "long": {
+   "requests": 81,
+   "errors": 65,
+   "out_tok_s": 4,
+   "ttft_p50_ms": 896.7,
+   "ttft_p95_ms": 1141.4,
+   "ttft_p99_ms": 1375.5,
+   "itl_p50_ms": 27.7,
+   "itl_p95_ms": 61.1,
+   "itl_p99_ms": 93.7,
+   "itl_max_ms": 128.6
+  }
+ }
+]

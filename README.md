@@ -18,7 +18,7 @@ This is the architecture behind every frontier serving stack in 2026. Knowing wh
 
 ## Status
 
-Proxy, simulator and tests are done; the simulated results are below. The 2 x T4 run is queued on Kaggle and its results will replace the "pending" section when it finishes.
+Done. One measured run on Kaggle's 2 x T4 (below), with the simulator's predictions next to it.
 
 ## Simulated results
 
@@ -81,9 +81,36 @@ A 3,000-token prompt costs about 1.65 s of prefill on this GPU, so one request p
 
 For this model on this GPU the KV transfer is never more than a quarter of the prefill it follows, even at 1 GB/s, because the T4 prefills slowly (0.1 ms per token and up) while 28 KB per token crosses even a slow link in 0.03 ms. The ratio flips on hardware that prefills 50x faster with a model whose KV per token is larger: there the link is the design constraint, which is why production stacks run it over NVLink or RDMA.
 
-## Measured results (2 x T4)
+## Measured results (2 x T4, Kaggle, 18 Oct 2026)
 
-Pending: the Kaggle run is queued. The notebook records, per condition, tokenbench's TTFT and ITL percentiles for both streams, total output tokens per second, and the proxy's prefill and handoff times; this section will carry that table and `results/kaggle_run1/`.
+vLLM 0.31.0, Qwen2.5-1.5B-Instruct fp16, one instance per T4 via `CUDA_VISIBLE_DEVICES`, `nixl` 1.4.1 over UCX on the same host. The same load through the proxy in every condition: 6 req/s of 96-token prompts with 128-token answers plus 0.5 req/s of 1,500-token prompts with 48-token answers, unique prompts, 180 s, after a 20 s warm-up that is discarded. Raw files in [results/kaggle_run1/](results/kaggle_run1/).
+
+| condition | GPUs | out tok/s | interactive TTFT p50 / p95 | interactive ITL p50 / p99 / **max** | long TTFT p50 / p95 | proxy: prefill hop p50 | proxy: handoff p50 | errors |
+|---|---|---|---|---|---|---|---|---|
+| monolithic | 1 | 775 | 148 / 803 ms | 32.9 / 584 / **749 ms** | 655 / 1,153 ms | – | – | 0 |
+| monolithic x2, round-robin | 2 | 777 | 84 / 474 ms | 19.8 / 55 / **613 ms** | 623 / 804 ms | – | – | 0 |
+| **1P + 1D, NixlConnector** | 2 | 774 | 303 / 1,272 ms | 26.7 / 54.8 / **134 ms** | 1,072 / 1,549 ms | 100 ms | 212 ms | 0 |
+| 1P + 1D, ExampleConnector | 2 | 114 | 222 / 952 ms | 27.5 / 91.6 / 171 ms | 897 / 1,141 ms | 125 ms | 138 ms | **984 of 1,158** |
+
+![measured](results/kaggle_run1/conditions.png)
+
+"Prefill hop" is the proxy's round-trip to the prefill instance (one token, `kv_transfer_params.do_remote_decode`); "handoff" is from sending the decode request to its first byte, which contains the NIXL read of the KV blocks plus the decode instance's own scheduling. 1,158 requests per condition; 0 errors except where stated.
+
+### What the numbers say
+
+1. **Disaggregation removed the stall, and it was the only thing that did.** Interactive ITL max went from 749 ms (one monolithic server) and 613 ms (two monolithic replicas: each still prefills 1,500-token prompts in its own decode loop) to 134 ms with a dedicated decode GPU; p99 fell from 584 ms to 55 ms. The simulator predicted 661 / 595 / 25 ms for the same three layouts; it got the structure right and the residual wrong, because a real decode instance still has scheduling jitter and the Triton attention kernel's own variance, which a step-cost model does not.
+2. **The price was TTFT, and it was larger than the link cost.** Interactive TTFT p50 rose from 84 ms (two replicas) to 303 ms; long-prompt TTFT from 623 to 1,072 ms. The proxy's timings split that: about 100 ms for the prefill hop (an HTTP request to a GPU that is doing nothing but prefill, so this is mostly the prefill itself) and 212 ms for the handoff. The KV bytes for a 96-token prompt are under 3 MB; even over host memory that is a millisecond. The handoff is dominated by the second request's trip through vLLM's front end and scheduler and the asynchronous NIXL read being polled per step, not by bandwidth. The simulator's 16 ms link cost was the wrong thing to model for this setup; the two extra scheduler passes were the cost.
+3. **Throughput was identical across the three working layouts** (774 to 777 tok/s) because the load was chosen below saturation for one GPU: this run measures latency structure, not capacity. The P GPU was mostly idle (6.5 prefills per second at ~100 ms each), which is the throughput argument against 1P + 1D in one sentence.
+4. **The two monolithic replicas halved the median ITL** (32.9 to 19.8 ms) by halving each decode batch, and the P/D pair sat between them (26.7 ms) because its single decode GPU carries the whole batch. Median latency favours replication; tail latency favours splitting.
+5. **vLLM's ExampleConnector is a debug tool, and under load it behaved like one.** The decode instance's engine died 90 s into the run with `shape mismatch: value tensor of shape [1456, 2, 256] cannot be broadcast to indexing result of shape [1536, 2, 256]`, a partial-block alignment error when loading a stored prompt's KV, and every request after that was a 502 from the proxy (`results/kaggle_run1/startup_shared_gpu1.log`). Up to the crash, its handoff (138 ms) was no worse than NIXL's, because at 3 MB per prompt even a filesystem round-trip is cheap on this model. The 29,000 files it left in the kernel's output directory are their own argument against it.
+6. **Cold start was the same for all layouts** (103 to 163 s to `/health`, two instances starting in parallel), so disaggregation does not change the autoscaling arithmetic from [gpuscaler](https://github.com/NomanJafar/gpuscaler).
+
+### What was not measured, and a defect in the run
+
+- The two P/D conditions shared a file tag in the notebook, so the ExampleConnector run overwrote the NixlConnector run's raw tokenbench JSON and proxy records; the NIXL numbers above come from the in-memory summaries the notebook wrote to `runs.json`, and the per-request files in `results/kaggle_run1/load_1P_p_1D_*` and `records_1P_p_1D.json` belong to the ExampleConnector condition. The tag is fixed in the committed notebook; a second run will restore the raw files.
+- No load level above one GPU's capacity, so no measurement of the throughput cost of splitting; the simulator's section 2 covers it and the saturation point is in [tokenbench](https://github.com/NomanJafar/tokenbench)'s open-loop sweep.
+- One run, one seed, 180 s per condition. The ITL maxima are single events; the p99s and medians are over roughly 140,000 inter-token gaps each and are stable.
+- P:D ratios other than 1:1, and a link slower or faster than two T4s on one PCIe host.
 
 ## Layout
 
