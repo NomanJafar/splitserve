@@ -1,0 +1,1887 @@
+{
+ "config": {
+  "base_url": "http://127.0.0.1:8080",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "mode": "open",
+  "levels": [
+   0.5
+  ],
+  "prompts": "unique",
+  "prompt_tokens": 1500,
+  "max_tokens": 48,
+  "ignore_eos": true,
+  "warmup": 0,
+  "seed": 0,
+  "num_requests": null,
+  "duration_s": 180.0,
+  "slo": {
+   "ttft_ms": null,
+   "tpot_ms": null
+  },
+  "tokenbench_version": "0.1.0",
+  "python": "3.13.15",
+  "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+  "started_at": "2026-10-17T21:54:39+0000",
+  "command": "tokenbench sweep --base-url http://127.0.0.1:8080 --model Qwen/Qwen2.5-1.5B-Instruct --mode open --duration 180 --warmup 0 --prompts unique --request-timeout 120 --out results/load_shared_long.json --levels 0.5 --prompt-tokens 1500 --max-tokens 48"
+ },
+ "levels": [
+  {
+   "mode": "open",
+   "level": 0.5,
+   "warmup_requests": 0,
+   "requests": 81,
+   "errors": 61,
+   "wall_s": 180.23662378400013,
+   "completion_tokens": 936,
+   "prompt_tokens": 29268,
+   "requests_per_s": 0.11096523880722753,
+   "output_tokens_per_s": 5.193173176178249,
+   "total_tokens_per_s": 167.57970364667503,
+   "ttft": {
+    "n": 20,
+    "mean": 1.1146916185000009,
+    "p50": 0.9633403694999743,
+    "p95": 1.4930490301999975,
+    "p99": 3.755370293239967,
+    "min": 0.6523983969998426,
+    "max": 4.320950608999965
+   },
+   "tpot": {
+    "n": 20,
+    "mean": 0.028305627771091253,
+    "p50": 0.02961148451063938,
+    "p95": 0.031980985280849014,
+    "p99": 0.03312977935404191,
+    "min": 0.02294145059574398,
+    "max": 0.03341697787234014
+   },
+   "itl": {
+    "n": 916,
+    "mean": 0.028410513900654792,
+    "p50": 0.025394076999873505,
+    "p95": 0.06012736075001612,
+    "p99": 0.08966164680000482,
+    "min": 0.00035187599996788776,
+    "max": 0.20134843699997873
+   },
+   "e2e": {
+    "n": 20,
+    "mean": 2.550021124299974,
+    "p50": 2.335922514999993,
+    "p95": 3.0441987779999327,
+    "p99": 6.637871819599855,
+    "min": 1.7569664049999574,
+    "max": 7.536290079999844
+   },
+   "slo": null,
+   "num_requests_adjusted_from": null,
+   "metrics_timeline": [
+    {
+     "t": 0.011542147999989538
+    },
+    {
+     "t": 0.5144334910000907
+    },
+    {
+     "t": 1.016979117000119
+    },
+    {
+     "t": 1.5197412899999563
+    },
+    {
+     "t": 2.0237333909999506
+    },
+    {
+     "t": 2.5264675309999802
+    },
+    {
+     "t": 3.029800987000044
+    },
+    {
+     "t": 3.5323374340000555
+    },
+    {
+     "t": 4.035131859000103
+    },
+    {
+     "t": 4.537546884999983
+    },
+    {
+     "t": 5.039850950000073
+    },
+    {
+     "t": 5.5422474800000145
+    },
+    {
+     "t": 6.045042047000152
+    },
+    {
+     "t": 6.547636189000059
+    },
+    {
+     "t": 7.0514151380000385
+    },
+    {
+     "t": 7.554101400000036
+    },
+    {
+     "t": 8.057049489000065
+    },
+    {
+     "t": 8.560907856000085
+    },
+    {
+     "t": 9.06400197400012
+    },
+    {
+     "t": 9.567187654999998
+    },
+    {
+     "t": 10.070046797000032
+    },
+    {
+     "t": 10.573073785000133
+    },
+    {
+     "t": 11.076566761000095
+    },
+    {
+     "t": 11.580081512000106
+    },
+    {
+     "t": 12.08365569800003
+    },
+    {
+     "t": 12.589011091999964
+    },
+    {
+     "t": 13.092430508999996
+    },
+    {
+     "t": 13.598608214000024
+    },
+    {
+     "t": 14.10127255600014
+    },
+    {
+     "t": 14.604891343999952
+    },
+    {
+     "t": 15.107401612000103
+    },
+    {
+     "t": 15.611773906000053
+    },
+    {
+     "t": 16.116518552000116
+    },
+    {
+     "t": 16.619700229000046
+    },
+    {
+     "t": 17.123276981000117
+    },
+    {
+     "t": 17.625431188999983
+    },
+    {
+     "t": 18.128960202000144
+    },
+    {
+     "t": 18.63265876300011
+    },
+    {
+     "t": 19.13571652099995
+    },
+    {
+     "t": 19.638165025000035
+    },
+    {
+     "t": 20.14203481300001
+    },
+    {
+     "t": 20.64559589700002
+    },
+    {
+     "t": 21.148333758000035
+    },
+    {
+     "t": 21.65128831700008
+    },
+    {
+     "t": 22.154022811999994
+    },
+    {
+     "t": 22.658605224999974
+    },
+    {
+     "t": 23.16169181500004
+    },
+    {
+     "t": 23.663779256999987
+    },
+    {
+     "t": 24.16820435500017
+    },
+    {
+     "t": 24.673253006000095
+    },
+    {
+     "t": 25.176147795000134
+    },
+    {
+     "t": 25.67961367099997
+    },
+    {
+     "t": 26.183799917999977
+    },
+    {
+     "t": 26.68853762599997
+    },
+    {
+     "t": 27.192021496000052
+    },
+    {
+     "t": 27.69654010399995
+    },
+    {
+     "t": 28.199249507000104
+    },
+    {
+     "t": 28.702629128000126
+    },
+    {
+     "t": 29.207018629000004
+    },
+    {
+     "t": 29.71011637100014
+    },
+    {
+     "t": 30.214092259000154
+    },
+    {
+     "t": 30.71985462900011
+    },
+    {
+     "t": 31.222684911999977
+    },
+    {
+     "t": 31.725556450000113
+    },
+    {
+     "t": 32.227956332000076
+    },
+    {
+     "t": 32.73133638100012
+    },
+    {
+     "t": 33.23500619000015
+    },
+    {
+     "t": 33.73828685000012
+    },
+    {
+     "t": 34.241377445000126
+    },
+    {
+     "t": 34.74541302200009
+    },
+    {
+     "t": 35.24870012400015
+    },
+    {
+     "t": 35.751639364000084
+    },
+    {
+     "t": 36.26266299700001
+    },
+    {
+     "t": 36.76560238100001
+    },
+    {
+     "t": 37.26932935700006
+    },
+    {
+     "t": 37.77220308200003
+    },
+    {
+     "t": 38.276748493000014
+    },
+    {
+     "t": 38.77906764600016
+    },
+    {
+     "t": 39.282237726000176
+    },
+    {
+     "t": 39.78531577400008
+    },
+    {
+     "t": 40.28932861700014
+    },
+    {
+     "t": 40.79230859900008
+    },
+    {
+     "t": 41.2958334760001
+    },
+    {
+     "t": 41.799424902000055
+    },
+    {
+     "t": 42.30255417100011
+    },
+    {
+     "t": 42.806178172000045
+    },
+    {
+     "t": 43.30945778
+    },
+    {
+     "t": 43.81409588400015
+    },
+    {
+     "t": 44.31875034100017
+    },
+    {
+     "t": 44.82220618200017
+    },
+    {
+     "t": 45.32564212700004
+    },
+    {
+     "t": 45.82922789100007
+    },
+    {
+     "t": 46.332372720999956
+    },
+    {
+     "t": 46.83533469700001
+    },
+    {
+     "t": 47.338464364000174
+    },
+    {
+     "t": 47.84139567000011
+    },
+    {
+     "t": 48.34458891899999
+    },
+    {
+     "t": 48.84783046000007
+    },
+    {
+     "t": 49.35188295700004
+    },
+    {
+     "t": 49.85551014500015
+    },
+    {
+     "t": 50.35859069800017
+    },
+    {
+     "t": 50.86334311900009
+    },
+    {
+     "t": 51.369356070000094
+    },
+    {
+     "t": 51.874974431000055
+    },
+    {
+     "t": 52.378619939000146
+    },
+    {
+     "t": 52.882123286000024
+    },
+    {
+     "t": 53.38731385799997
+    },
+    {
+     "t": 53.89193068600002
+    },
+    {
+     "t": 54.39585410200016
+    },
+    {
+     "t": 54.899482111
+    },
+    {
+     "t": 55.402568354000095
+    },
+    {
+     "t": 55.90642645499997
+    },
+    {
+     "t": 56.40956967400007
+    },
+    {
+     "t": 56.912444364000066
+    },
+    {
+     "t": 57.41558026100006
+    },
+    {
+     "t": 57.918703967000056
+    },
+    {
+     "t": 58.42210251000006
+    },
+    {
+     "t": 58.925566462000006
+    },
+    {
+     "t": 59.42953357200008
+    },
+    {
+     "t": 59.93241633599996
+    },
+    {
+     "t": 60.43564677600011
+    },
+    {
+     "t": 60.94067162500005
+    },
+    {
+     "t": 61.44429839500003
+    },
+    {
+     "t": 61.948503756000036
+    },
+    {
+     "t": 62.45316534900007
+    },
+    {
+     "t": 62.956300073999955
+    },
+    {
+     "t": 63.46068031000004
+    },
+    {
+     "t": 63.96468449400004
+    },
+    {
+     "t": 64.46771040099998
+    },
+    {
+     "t": 64.97207901599995
+    },
+    {
+     "t": 65.47602040400011
+    },
+    {
+     "t": 65.98014276799995
+    },
+    {
+     "t": 66.48413335999999
+    },
+    {
+     "t": 66.98822593600016
+    },
+    {
+     "t": 67.49149221400012
+    },
+    {
+     "t": 67.99528721900015
+    },
+    {
+     "t": 68.49823445000015
+    },
+    {
+     "t": 69.00215455700004
+    },
+    {
+     "t": 69.50560394500008
+    },
+    {
+     "t": 70.00841014599996
+    },
+    {
+     "t": 70.51771831700012
+    },
+    {
+     "t": 71.02138061799997
+    },
+    {
+     "t": 71.52520662300003
+    },
+    {
+     "t": 72.02910060500017
+    },
+    {
+     "t": 72.532617717
+    },
+    {
+     "t": 73.03618601100015
+    },
+    {
+     "t": 73.53937392400007
+    },
+    {
+     "t": 74.04296698799999
+    },
+    {
+     "t": 74.54630570600011
+    },
+    {
+     "t": 75.04945224200014
+    },
+    {
+     "t": 75.55223965000005
+    },
+    {
+     "t": 76.05545225500009
+    },
+    {
+     "t": 76.55922311300014
+    },
+    {
+     "t": 77.06304399800001
+    },
+    {
+     "t": 77.56732986199995
+    },
+    {
+     "t": 78.07123735100004
+    },
+    {
+     "t": 78.57446970800015
+    },
+    {
+     "t": 79.07956960299998
+    },
+    {
+     "t": 79.58297983700004
+    },
+    {
+     "t": 80.08639240100001
+    },
+    {
+     "t": 80.58951649400001
+    },
+    {
+     "t": 81.09378118900008
+    },
+    {
+     "t": 81.59706836300006
+    },
+    {
+     "t": 82.10135542100011
+    },
+    {
+     "t": 82.60470912200003
+    },
+    {
+     "t": 83.11131932600006
+    },
+    {
+     "t": 83.61563748100002
+    },
+    {
+     "t": 84.11839437900016
+    },
+    {
+     "t": 84.62207613300006
+    },
+    {
+     "t": 85.12580910700012
+    },
+    {
+     "t": 85.62835021399997
+    },
+    {
+     "t": 86.13153409200004
+    },
+    {
+     "t": 86.63606191400004
+    },
+    {
+     "t": 87.13912750100008
+    },
+    {
+     "t": 87.64280605299996
+    },
+    {
+     "t": 88.14618457999995
+    },
+    {
+     "t": 88.64970979600002
+    },
+    {
+     "t": 89.15334786000017
+    },
+    {
+     "t": 89.65722371700008
+    },
+    {
+     "t": 90.16039721300012
+    },
+    {
+     "t": 90.66363971700002
+    },
+    {
+     "t": 91.16728104599997
+    },
+    {
+     "t": 91.67223175000004
+    },
+    {
+     "t": 92.17541021200009
+    },
+    {
+     "t": 92.67857971000012
+    },
+    {
+     "t": 93.18144218500015
+    },
+    {
+     "t": 93.68496911000011
+    },
+    {
+     "t": 94.1884697590001
+    },
+    {
+     "t": 94.69210978399997
+    },
+    {
+     "t": 95.1953901490001
+    },
+    {
+     "t": 95.69872575500017
+    },
+    {
+     "t": 96.20242563800002
+    },
+    {
+     "t": 96.70549508299996
+    },
+    {
+     "t": 97.20949732300005
+    },
+    {
+     "t": 97.7126256890001
+    },
+    {
+     "t": 98.21534616999998
+    },
+    {
+     "t": 98.71864593400005
+    },
+    {
+     "t": 99.22227443099996
+    },
+    {
+     "t": 99.72600461900015
+    },
+    {
+     "t": 100.22922582600017
+    },
+    {
+     "t": 100.73236642999996
+    },
+    {
+     "t": 101.23677642999996
+    },
+    {
+     "t": 101.74029438499997
+    },
+    {
+     "t": 102.24348793700005
+    },
+    {
+     "t": 102.74668697800007
+    },
+    {
+     "t": 103.25190624900006
+    },
+    {
+     "t": 103.75551646999998
+    },
+    {
+     "t": 104.25956826600009
+    },
+    {
+     "t": 104.76326469500009
+    },
+    {
+     "t": 105.26737080700013
+    },
+    {
+     "t": 105.77067370200007
+    },
+    {
+     "t": 106.27409205499998
+    },
+    {
+     "t": 106.77745172200002
+    },
+    {
+     "t": 107.28106075899996
+    },
+    {
+     "t": 107.78504455000007
+    },
+    {
+     "t": 108.29257875300004
+    },
+    {
+     "t": 108.79653855200013
+    },
+    {
+     "t": 109.30001129800007
+    },
+    {
+     "t": 109.80340581200016
+    },
+    {
+     "t": 110.30717270600007
+    },
+    {
+     "t": 110.81138456999997
+    },
+    {
+     "t": 111.3154764190001
+    },
+    {
+     "t": 111.82049080399997
+    },
+    {
+     "t": 112.32378638399996
+    },
+    {
+     "t": 112.827338542
+    },
+    {
+     "t": 113.33128744800001
+    },
+    {
+     "t": 113.83479283800011
+    },
+    {
+     "t": 114.33900396900003
+    },
+    {
+     "t": 114.84275293500014
+    },
+    {
+     "t": 115.34627372700015
+    },
+    {
+     "t": 115.84992176600008
+    },
+    {
+     "t": 116.35380175099999
+    },
+    {
+     "t": 116.85706184000014
+    },
+    {
+     "t": 117.36444790200017
+    },
+    {
+     "t": 117.86871142600012
+    },
+    {
+     "t": 118.37222520499995
+    },
+    {
+     "t": 118.87580702200012
+    },
+    {
+     "t": 119.380146298
+    },
+    {
+     "t": 119.88358609600004
+    },
+    {
+     "t": 120.38728837500003
+    },
+    {
+     "t": 120.8913362400001
+    },
+    {
+     "t": 121.39447401200005
+    },
+    {
+     "t": 121.89796752200004
+    },
+    {
+     "t": 122.40265916900012
+    },
+    {
+     "t": 122.90668485300012
+    },
+    {
+     "t": 123.41007072900015
+    },
+    {
+     "t": 123.91352230500001
+    },
+    {
+     "t": 124.41721563800002
+    },
+    {
+     "t": 124.92053514400004
+    },
+    {
+     "t": 125.42427258500015
+    },
+    {
+     "t": 125.92746265799997
+    },
+    {
+     "t": 126.431762058
+    },
+    {
+     "t": 126.935933213
+    },
+    {
+     "t": 127.43959455599997
+    },
+    {
+     "t": 127.94332969700008
+    },
+    {
+     "t": 128.44766029700008
+    },
+    {
+     "t": 128.951075897
+    },
+    {
+     "t": 129.45420746500008
+    },
+    {
+     "t": 129.957472822
+    },
+    {
+     "t": 130.4614463580001
+    },
+    {
+     "t": 130.9663135610001
+    },
+    {
+     "t": 131.47096449100013
+    },
+    {
+     "t": 131.97631749900006
+    },
+    {
+     "t": 132.47966569200003
+    },
+    {
+     "t": 132.98373662300014
+    },
+    {
+     "t": 133.48762658700002
+    },
+    {
+     "t": 133.99137746500014
+    },
+    {
+     "t": 134.49530189000006
+    },
+    {
+     "t": 134.99857418600004
+    },
+    {
+     "t": 135.50413435200016
+    },
+    {
+     "t": 136.0085138500001
+    },
+    {
+     "t": 136.51293694900005
+    },
+    {
+     "t": 137.01661274100002
+    },
+    {
+     "t": 137.5201810200001
+    },
+    {
+     "t": 138.02433131099997
+    },
+    {
+     "t": 138.52772621300005
+    },
+    {
+     "t": 139.03153049599996
+    },
+    {
+     "t": 139.53522860199996
+    },
+    {
+     "t": 140.04036004900013
+    },
+    {
+     "t": 140.5442854360001
+    },
+    {
+     "t": 141.04863745800003
+    },
+    {
+     "t": 141.55234561600014
+    },
+    {
+     "t": 142.05579931500006
+    },
+    {
+     "t": 142.55942998900014
+    },
+    {
+     "t": 143.06265628899996
+    },
+    {
+     "t": 143.566078435
+    },
+    {
+     "t": 144.06980258700014
+    },
+    {
+     "t": 144.5732743430001
+    },
+    {
+     "t": 145.07916412200007
+    },
+    {
+     "t": 145.5836832540001
+    },
+    {
+     "t": 146.08745390400009
+    },
+    {
+     "t": 146.59054077700011
+    },
+    {
+     "t": 147.09440788000006
+    },
+    {
+     "t": 147.60051205900004
+    },
+    {
+     "t": 148.10497118900003
+    },
+    {
+     "t": 148.60850441000002
+    },
+    {
+     "t": 149.11203095500014
+    },
+    {
+     "t": 149.61611747400002
+    },
+    {
+     "t": 150.120811023
+    },
+    {
+     "t": 150.62511916200015
+    },
+    {
+     "t": 151.12949019300004
+    },
+    {
+     "t": 151.63306738699998
+    },
+    {
+     "t": 152.136611723
+    },
+    {
+     "t": 152.64072216800014
+    },
+    {
+     "t": 153.14542318999997
+    },
+    {
+     "t": 153.64863999900012
+    },
+    {
+     "t": 154.15228706800008
+    },
+    {
+     "t": 154.656403813
+    },
+    {
+     "t": 155.161674404
+    },
+    {
+     "t": 155.6665954340001
+    },
+    {
+     "t": 156.17004261500006
+    },
+    {
+     "t": 156.67414278299998
+    },
+    {
+     "t": 157.17862477100016
+    },
+    {
+     "t": 157.68307985299998
+    },
+    {
+     "t": 158.18727695300004
+    },
+    {
+     "t": 158.69160441100007
+    },
+    {
+     "t": 159.1945398570001
+    },
+    {
+     "t": 159.69819750800002
+    },
+    {
+     "t": 160.20265458900008
+    },
+    {
+     "t": 160.70655382500013
+    },
+    {
+     "t": 161.21049345300003
+    },
+    {
+     "t": 161.71363066599997
+    },
+    {
+     "t": 162.2173050660001
+    },
+    {
+     "t": 162.72056423699996
+    },
+    {
+     "t": 163.22387948899996
+    },
+    {
+     "t": 163.72742078400006
+    },
+    {
+     "t": 164.23092070000007
+    },
+    {
+     "t": 164.73452008100003
+    },
+    {
+     "t": 165.23785923000014
+    },
+    {
+     "t": 165.74355531000015
+    },
+    {
+     "t": 166.24644424000007
+    },
+    {
+     "t": 166.75064397999995
+    },
+    {
+     "t": 167.254954624
+    },
+    {
+     "t": 167.75877180199996
+    },
+    {
+     "t": 168.2625561330001
+    },
+    {
+     "t": 168.76628084799995
+    },
+    {
+     "t": 169.26977185200008
+    },
+    {
+     "t": 169.773333331
+    },
+    {
+     "t": 170.27654906400016
+    },
+    {
+     "t": 170.78018384300003
+    },
+    {
+     "t": 171.2836997500001
+    },
+    {
+     "t": 171.78770852499997
+    },
+    {
+     "t": 172.29150006300006
+    },
+    {
+     "t": 172.79461560699997
+    },
+    {
+     "t": 173.29839579500003
+    },
+    {
+     "t": 173.80215943100006
+    },
+    {
+     "t": 174.3065684180001
+    },
+    {
+     "t": 174.81030157600003
+    },
+    {
+     "t": 175.31370453399995
+    },
+    {
+     "t": 175.81851351299997
+    },
+    {
+     "t": 176.32155289399998
+    },
+    {
+     "t": 176.82563530400012
+    },
+    {
+     "t": 177.32932527900016
+    },
+    {
+     "t": 177.833077193
+    },
+    {
+     "t": 178.33760903999996
+    },
+    {
+     "t": 178.8411007750001
+    },
+    {
+     "t": 179.34494431999997
+    },
+    {
+     "t": 179.84919501800005
+    }
+   ],
+   "per_request": [
+    {
+     "t_start": 110.60777811800017,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.8343383819999417,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 63.49926643699996,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7005682410001555,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 117.46245387700014,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7334792550000202,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 62.36059569500003,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.1128145440000026,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 120.713515207,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 2.5024511740000435,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 121.90085667700009,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 2.826367008000034,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 122.06883188500001,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 2.6577429300000404,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 122.84066675000008,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 2.400371662999987,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 129.66178397,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.3305973950000407,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 62.148527865999995,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.241566283000111,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 135.53270566000015,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.6875533830000222,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 86.24959594100005,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.8571690050000598,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 53.985462867000024,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.773301943999968,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 60.87114119900002,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7598918600001525,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 138.90162148600007,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7873497699999916,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 51.36940219100006,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 2.156248430000005,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 500: {\"error\":\"{\\\"error\\\":{\\\"message\\\":\\\"EngineCore encountered an issue. See stack trace (above) for the root cause.\\\",\\\"type\\\":\\\"InternalServerError\\\",\\\"param\\\":null,\\\"code\\\":500}}\",\"stage\":\"decode\"}"
+    },
+    {
+     "t_start": 140.45735483600015,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7239257149999503,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 65.38838531800002,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.6513558330000251,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 147.0944359130001,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7285749989998749,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 50.62485900299998,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 2.901889231000041,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 500: {\"error\":\"{\\\"error\\\":{\\\"message\\\":\\\"EngineCore encountered an issue. See stack trace (above) for the root cause.\\\",\\\"type\\\":\\\"InternalServerError\\\",\\\"param\\\":null,\\\"code\\\":500}}\",\"stage\":\"decode\"}"
+    },
+    {
+     "t_start": 150.715127552,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.779004322999981,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 27.213945857999988,
+     "ttft_s": 0.8812432450001779,
+     "tpot_s": 0.02971229357446762,
+     "e2e_s": 2.2790981480000028,
+     "prompt_tokens": 1541,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 124.25864712900011,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.8219655450000118,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 129.89142809700002,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.4014387770000667,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 7.651691672999959,
+     "ttft_s": 0.8106855220000853,
+     "tpot_s": 0.028775871361703856,
+     "e2e_s": 2.1638105270001233,
+     "prompt_tokens": 1540,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 131.49377142800017,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.6875878129999364,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 45.975230893000116,
+     "ttft_s": 4.320950608999965,
+     "tpot_s": 0.02430247382608286,
+     "e2e_s": 7.536290079999844,
+     "prompt_tokens": null,
+     "completion_tokens": 24,
+     "error": null
+    },
+    {
+     "t_start": 0.007570330000135073,
+     "ttft_s": 0.6523983969998426,
+     "tpot_s": 0.023485634595748164,
+     "e2e_s": 1.7569664049999574,
+     "prompt_tokens": 1540,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 133.94602161800003,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7046534180001345,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 58.567244210000126,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.6578232099998331,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 34.52865716400015,
+     "ttft_s": 1.1173921189999874,
+     "tpot_s": 0.031068270297872857,
+     "e2e_s": 2.5788050629998907,
+     "prompt_tokens": 1541,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 42.652604322000116,
+     "ttft_s": 1.0167487569999594,
+     "tpot_s": 0.027995523297873814,
+     "e2e_s": 2.333106906000012,
+     "prompt_tokens": 1541,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 29.718466513000067,
+     "ttft_s": 1.3442121049999969,
+     "tpot_s": 0.031063417276595343,
+     "e2e_s": 2.807772919999934,
+     "prompt_tokens": 1541,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 29.140660847000163,
+     "ttft_s": 0.8824077199999465,
+     "tpot_s": 0.030954327042551046,
+     "e2e_s": 2.338738123999974,
+     "prompt_tokens": 1541,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 148.94375321000007,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7567850670000098,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 24.394746265000094,
+     "ttft_s": 0.9687632929999381,
+     "tpot_s": 0.03341697787234014,
+     "e2e_s": 2.539974284999971,
+     "prompt_tokens": 1541,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 151.89223195299996,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.8338713250000183,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 23.732072400000106,
+     "ttft_s": 0.8084199570000692,
+     "tpot_s": 0.031201545893615748,
+     "e2e_s": 2.276791560999982,
+     "prompt_tokens": 1541,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 22.32711181600007,
+     "ttft_s": 0.9561640019999231,
+     "tpot_s": 0.02951067544681114,
+     "e2e_s": 2.344039379999913,
+     "prompt_tokens": 1541,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 153.706670563,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.6577252050001334,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 8.251200319999953,
+     "ttft_s": 0.99324386100011,
+     "tpot_s": 0.030027763659576368,
+     "e2e_s": 2.4079493600002024,
+     "prompt_tokens": 1540,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 154.67829715400012,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7452709570000025,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 9.682111359000146,
+     "ttft_s": 0.976208153000016,
+     "tpot_s": 0.029747768489361524,
+     "e2e_s": 2.3753948930000206,
+     "prompt_tokens": 1540,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 156.39322016300002,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.6305359620000672,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 70.27154726799995,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.1342836480000642,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 17.553152954000097,
+     "ttft_s": 0.8716211450000628,
+     "tpot_s": 0.02294145059574398,
+     "e2e_s": 1.9505881479999516,
+     "prompt_tokens": 1541,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 157.079346793,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.205610975000127,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 77.07049298600009,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7155279680000604,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 15.801709937000169,
+     "ttft_s": 0.9211288729998159,
+     "tpot_s": 0.024050595276597225,
+     "e2e_s": 2.0524991329998556,
+     "prompt_tokens": 1540,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 157.49933015800002,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.4579126799999358,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 78.36639101700007,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.6649044270000104,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 82.37605154900007,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.2953640299999734,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 3.722386183000026,
+     "ttft_s": 0.9813672560001123,
+     "tpot_s": 0.023599718148934117,
+     "e2e_s": 2.0913214990000597,
+     "prompt_tokens": 1540,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 157.91229107799995,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.123550694000187,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 82.97978477000015,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.8828569929999048,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 6.559555505000162,
+     "ttft_s": 0.9579174460000104,
+     "tpot_s": 0.0232893279999963,
+     "e2e_s": 2.0530584349999117,
+     "prompt_tokens": 1540,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 163.24181813300015,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.1787768120000237,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 87.83971232600015,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.2607262599999558,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 13.784186666000096,
+     "ttft_s": 0.8055214409998825,
+     "tpot_s": 0.029272633680851326,
+     "e2e_s": 2.182327303999955,
+     "prompt_tokens": 1540,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 159.80912433100002,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.6592471179999393,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 87.86857934800014,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.4393111489998773,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 14.506604472000163,
+     "ttft_s": 1.0413610040000094,
+     "tpot_s": 0.029790880361699548,
+     "e2e_s": 2.442179408999891,
+     "prompt_tokens": 1539,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 161.94773318800003,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.6628913829999874,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 90.41246264999995,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7118168210001841,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 10.720754079000017,
+     "ttft_s": 0.9860774650001076,
+     "tpot_s": 0.03190540672340211,
+     "e2e_s": 2.4897109060000275,
+     "prompt_tokens": 1540,
+     "completion_tokens": 48,
+     "error": null
+    },
+    {
+     "t_start": 163.43069578200016,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.0658927779998066,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 91.43039664900016,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.6724101669999527,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 166.26425580399996,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7494011310000133,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 94.91423619400007,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7784734510000817,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 170.45265534300006,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.8215647600000011,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 97.12157378100005,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.2413244330000452,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 175.589796084,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.8093962010000268,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 97.12284064000005,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.3716345800000909,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 102.52816131500003,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.404077996000069,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 179.28661230500006,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.9497027990000788,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 98.48443092700018,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 0.7384068769999885,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 103.08713457400017,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.477052079999794,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 103.87392006000005,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.0745879620001233,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 107.96207536500015,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.3575642219998372,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 108.38563520100001,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.1848066630000176,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    },
+    {
+     "t_start": 110.06168438999998,
+     "ttft_s": null,
+     "tpot_s": null,
+     "e2e_s": 1.2694266340001832,
+     "prompt_tokens": null,
+     "completion_tokens": 0,
+     "error": "HTTP 502: {\"error\":\"decode unreachable: ConnectError\"}"
+    }
+   ]
+  }
+ ]
+}

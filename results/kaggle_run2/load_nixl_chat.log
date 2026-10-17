@@ -1,0 +1,7 @@
+req/s=6.0    req=1077 err=0   out_tok/s=  753.7  ttft_p50=   305ms  itl_p50= 23.4ms
+**tokenbench run** · model: Qwen/Qwen2.5-1.5B-Instruct · mode: open · server: http://127.0.0.1:8080
+
+| level | req | err | out tok/s | TTFT p50 | TTFT p95 | ITL p50 | ITL p95 | TPOT p50 |
+|---|---|---|---|---|---|---|---|---|
+| 6.0 | 1077 | 0 | 754 | 305 ms | 1256 ms | 23.4 ms | 36.3 ms | 24.4 ms |
+

@@ -18,7 +18,7 @@ This is the architecture behind every frontier serving stack in 2026. Knowing wh
 
 ## Status
 
-Done. One measured run on Kaggle's 2 x T4 (below), with the simulator's predictions next to it.
+Done. Two measured runs on Kaggle's 2 x T4 (below, the second a reproduction with complete raw files), with the simulator's predictions next to them.
 
 ## Simulated results
 
@@ -105,11 +105,24 @@ vLLM 0.31.0, Qwen2.5-1.5B-Instruct fp16, one instance per T4 via `CUDA_VISIBLE_D
 5. **vLLM's ExampleConnector is a debug tool, and under load it behaved like one.** The decode instance's engine died 90 s into the run with `shape mismatch: value tensor of shape [1456, 2, 256] cannot be broadcast to indexing result of shape [1536, 2, 256]`, a partial-block alignment error when loading a stored prompt's KV, and every request after that was a 502 from the proxy (`results/kaggle_run1/startup_shared_gpu1.log`). Up to the crash, its handoff (138 ms) was no worse than NIXL's, because at 3 MB per prompt even a filesystem round-trip is cheap on this model. The 29,000 files it left in the kernel's output directory are their own argument against it.
 6. **Cold start was the same for all layouts** (103 to 163 s to `/health`, two instances starting in parallel), so disaggregation does not change the autoscaling arithmetic from [gpuscaler](https://github.com/NomanJafar/gpuscaler).
 
-### What was not measured, and a defect in the run
+### Reproduction (run 2, same night)
 
-- The two P/D conditions shared a file tag in the notebook, so the ExampleConnector run overwrote the NixlConnector run's raw tokenbench JSON and proxy records; the NIXL numbers above come from the in-memory summaries the notebook wrote to `runs.json`, and the per-request files in `results/kaggle_run1/load_1P_p_1D_*` and `records_1P_p_1D.json` belong to the ExampleConnector condition. The tag is fixed in the committed notebook; a second run will restore the raw files.
+The run was repeated with unique file tags and the KV store moved out of the kernel output ([results/kaggle_run2/](results/kaggle_run2/), raw files for every condition this time):
+
+| condition | out tok/s | interactive TTFT p50 | interactive ITL p50 / p99 / **max** | long TTFT p50 | handoff p50 | errors |
+|---|---|---|---|---|---|---|
+| monolithic | 776 | 136 ms | 30.7 / 572 / **1,130 ms** | 645 ms | – | 0 |
+| monolithic x2 | 779 | 75 ms | 18.1 / 47.5 / **591 ms** | 608 ms | – | 0 |
+| 1P + 1D, NixlConnector | 775 | 305 ms | 23.4 / 50.3 / **129 ms** | 1,067 ms | 208 ms | 0 |
+| 1P + 1D, ExampleConnector | 187 | 235 ms | 24.1 / 82.5 / 201 ms | 963 ms | 138 ms | 878 of 1,158 |
+
+Medians, p99s, TTFTs and the handoff reproduce within a few percent; the maxima are single events and moved (the monolithic server's worst stall was 749 ms in run 1 and 1,130 ms in run 2). The ExampleConnector decode engine crashed again, the same way.
+
+### What was not measured
+
+- Run 1's two P/D conditions shared a file tag, so its `load_1P_p_1D_*` and `records_1P_p_1D.json` files belong to the ExampleConnector condition; the NixlConnector numbers in run 1's table come from the notebook's in-memory `runs.json`. Run 2 has complete raw files for every condition.
 - No load level above one GPU's capacity, so no measurement of the throughput cost of splitting; the simulator's section 2 covers it and the saturation point is in [tokenbench](https://github.com/NomanJafar/tokenbench)'s open-loop sweep.
-- One run, one seed, 180 s per condition. The ITL maxima are single events; the p99s and medians are over roughly 140,000 inter-token gaps each and are stable.
+- Two runs, one seed each, 180 s per condition. The ITL maxima are single events; the p99s and medians are over roughly 140,000 inter-token gaps each and reproduced across the two runs.
 - P:D ratios other than 1:1, and a link slower or faster than two T4s on one PCIe host.
 
 ## Layout
