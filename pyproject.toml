@@ -10,10 +10,15 @@ readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
 authors = [{ name = "Noman Jafar", email = "numanjafarshahzad@gmail.com" }]
-dependencies = []
+dependencies = ["httpx>=0.27", "fastapi>=0.110", "uvicorn>=0.29"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.6"]
+plots = ["matplotlib>=3.8"]
+dev = ["pytest>=8", "ruff>=0.6", "matplotlib>=3.8"]
+
+[project.scripts]
+splitserve-proxy = "splitserve.proxy:main"
+splitserve-sim = "splitserve.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/splitserve"]
@@ -22,4 +27,4 @@ packages = ["src/splitserve"]
 testpaths = ["tests"]
 
 [tool.ruff]
-line-length = 100
+line-length = 120
